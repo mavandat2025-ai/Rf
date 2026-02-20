@@ -1,0 +1,209 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://raw.githubusercontent.com/nguyencongbang1985depzai-wq/Koolo/refs/heads/main/main.lua
+Subject: 
+Date: Fri, 20 Feb 2026 19:41:28 +0700
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--dSVXg24D11EvpcjE2rb6FWvYRAc8I9GKA7LTfEssQX----"
+
+
+------MultipartBoundary--dSVXg24D11EvpcjE2rb6FWvYRAc8I9GKA7LTfEssQX----
+Content-Type: text/html
+Content-ID: <frame-8A615343A35D1832624824DDF8F5F3ED@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://raw.githubusercontent.com/nguyencongbang1985depzai-wq/Koolo/refs/heads/main/main.lua
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8"><meta name=3D"color-scheme" content=3D"light dark"></head><body><=
+pre style=3D"word-wrap: break-word; white-space: pre-wrap;">local Rayfield =
+=3D loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window =3D Rayfield:CreateWindow({
+   Name =3D "Binsigma Super Script 1.1 | Rayfield GUI",
+   LoadingTitle =3D "=C4=90ang t=E1=BA=A3i h=E1=BB=87 th=E1=BB=91ng Binsigm=
+a v1.1...",
+   LoadingSubtitle =3D "by Binsigma Team",
+   ConfigurationSaving =3D {
+      Enabled =3D true,
+      FolderName =3D "BinsigmaConfig",
+      FileName =3D "BinsigmaMain"
+   },
+   KeySystem =3D true,=20
+   KeySettings =3D {
+      Title =3D "H=E1=BB=87 Th=E1=BB=91ng Key",
+      Subtitle =3D "Nh=E1=BA=ADp key =C4=91=E1=BB=83 s=E1=BB=AD d=E1=BB=A5n=
+g",
+      Note =3D "Key l=C3=A0: binsigmadeptraivai",
+      FileName =3D "Đạt Roblox",
+      SaveKey =3D true,
+      GrabKeyFromSite =3D false,
+      Key =3D {""}=20
+   }
+})
+
+-- VARIABLES
+local lp =3D game.Players.LocalPlayer
+local mouse =3D lp:GetMouse()
+
+-----------------------------------------------------------
+-- TAB 1: CH=E1=BB=A8C N=C4=82NG CH=C3=8DNH
+-----------------------------------------------------------
+local MainTab =3D Window:CreateTab("Ch=E1=BB=A9c N=C4=83ng Ch=C3=ADnh", 448=
+3362458)
+
+MainTab:CreateButton({
+   Name =3D "Bay (Fly)",
+   Callback =3D function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/Fl=
+yGuiV3/main/FlyGuiV3.lua"))()
+   end,
+})
+
+MainTab:CreateToggle({
+   Name =3D "Noclip",
+   CurrentValue =3D false,
+   Callback =3D function(Value)
+       _G.noclip =3D Value
+       game:GetService("RunService").Stepped:Connect(function()
+           if _G.noclip then
+               for _, v in pairs(lp.Character:GetDescendants()) do
+                   if v:IsA("BasePart") then v.CanCollide =3D false end
+               end
+           end
+       end)
+   end,
+})
+
+MainTab:CreateButton({
+   Name =3D "Kill Aura (Ph=E1=BA=A1m vi 15m)",
+   Callback =3D function()
+       _G.KillAura =3D true
+       while _G.KillAura do
+           task.wait(0.1)
+           for _, v in pairs(game.Players:GetPlayers()) do
+               if v ~=3D lp and v.Character and v.Character:FindFirstChild(=
+"HumanoidRootPart") then
+                   local dist =3D (lp.Character.HumanoidRootPart.Position -=
+ v.Character.HumanoidRootPart.Position).magnitude
+                   if dist &lt; 15 then
+                       local tool =3D lp.Character:FindFirstChildOfClass("T=
+ool")
+                       if tool then tool:Activate() end
+                   end
+               end
+           end
+       end
+   end,
+})
+
+MainTab:CreateInput({
+   Name =3D "B=E1=BA=ADt Nh=E1=BA=A1c (Nh=E1=BA=ADp ID)",
+   PlaceholderText =3D "Nh=E1=BA=ADp ID nh=E1=BA=A1c...",
+   Callback =3D function(Text)
+       local s =3D Instance.new("Sound", game.Workspace)
+       s.SoundId =3D "rbxassetid://"..Text
+       s:Play()
+   end,
+})
+
+MainTab:CreateInput({
+   Name =3D "TP =C4=90=E1=BA=BFn Ng=C6=B0=E1=BB=9Di Ch=C6=A1i",
+   PlaceholderText =3D "Nh=E1=BA=ADp t=C3=AAn...",
+   Callback =3D function(Text)
+       local target =3D game.Players:FindFirstChild(Text)
+       if target then lp.Character.HumanoidRootPart.CFrame =3D target.Chara=
+cter.HumanoidRootPart.CFrame end
+   end,
+})
+
+MainTab:CreateButton({Name =3D "Dupe C=E1=BA=A3i Ti=E1=BA=BFn", Callback =
+=3D function() Rayfield:Notify({Title =3D "Th=C3=B4ng b=C3=A1o", Content =
+=3D "=C4=90ang th=E1=BB=B1c hi=E1=BB=87n...", Duration =3D 3}) end})
+
+MainTab:CreateButton({
+   Name =3D "TP Tool",
+   Callback =3D function()
+       for _, v in pairs(game.Workspace:GetChildren()) do
+           if v:IsA("BackpackItem") or v:IsA("Tool") then
+               v.Handle.CFrame =3D lp.Character.HumanoidRootPart.CFrame
+           end
+       end
+   end,
+})
+
+MainTab:CreateButton({
+   Name =3D "Delete Part Tool (Click Part =C4=91=E1=BB=83 xo=C3=A1)",
+   Callback =3D function()
+       local tool =3D Instance.new("Tool")
+       tool.RequiresHandle =3D false
+       tool.Name =3D "X=C3=B3a Part"
+       tool.Activated:Connect(function() if mouse.Target then mouse.Target:=
+Destroy() end end)
+       tool.Parent =3D lp.Backpack
+   end,
+})
+
+MainTab:CreateButton({
+   Name =3D "B=E1=BA=A5t T=E1=BB=AD C=E1=BA=A3i Ti=E1=BA=BFn M=E1=BA=A1nh",
+   Callback =3D function()
+       lp.Character.Humanoid.MaxHealth =3D math.huge
+       lp.Character.Humanoid.Health =3D math.huge
+   end,
+})
+
+MainTab:CreateSlider({
+   Name =3D "Nh=E1=BA=A3y Cao",
+   Range =3D {50, 500},
+   Increment =3D 10,
+   CurrentValue =3D 50,
+   Callback =3D function(Value) lp.Character.Humanoid.JumpPower =3D Value e=
+nd,
+})
+
+MainTab:CreateButton({
+   Name =3D "B=E1=BA=ADt ESP (X-Ray)",
+   Callback =3D function()
+       loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin0=
+00/SpaceHub/main/EspOnly'))()
+   end,
+})
+
+-----------------------------------------------------------
+-- TAB 2: SCRIPT 99 NIGHT
+-----------------------------------------------------------
+local NightTab =3D Window:CreateTab("99 Night", 4483362458)
+
+NightTab:CreateButton({Name =3D "Voidware", Callback =3D function() loadstr=
+ing(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/mai=
+n/loader.lua", true))() end})
+NightTab:CreateButton({Name =3D "H4x Scripts", Callback =3D function() load=
+string(game:HttpGet("https://raw.githubusercontent.com/H4xScripts/Loader/re=
+fs/heads/main/loader2.lua", true))() end})
+NightTab:CreateButton({Name =3D "Fox Scripts", Callback =3D function() load=
+string(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/re=
+fs/heads/main/FoxnameHub.lua"))() end})
+NightTab:CreateButton({Name =3D "CPS Script", Callback =3D function() loads=
+tring(game:HttpGet("https://raw.githubusercontent.com/Rx1m/CpsHub/refs/head=
+s/main/Hub",true))() end})
+NightTab:CreateButton({Name =3D "The Dark Ones", Callback =3D function() lo=
+adstring(game:HttpGet('https://raw.githubusercontent.com/TheDarkoneMarcilli=
+sePex/Other-Scripts/refs/heads/main/99%20Nights%20In%20The%20Forest%20GUI')=
+)() end})
+
+-----------------------------------------------------------
+-- TAB 3: THO=C3=81T KH=E1=BB=8EI S=C3=93NG TH=E1=BA=A6N
+-----------------------------------------------------------
+local TsunamiTab =3D Window:CreateTab("S=C3=B3ng Th=E1=BA=A7n", 4483362458)
+TsunamiTab:CreateButton({Name =3D "Rez Script", Callback =3D function() loa=
+dstring(game:HttpGet('https://raw.githubusercontent.com/rezhubz/rez/refs/he=
+ads/main/rez.lua'))() end})
+TsunamiTab:CreateButton({Name =3D "Gumbana (Brainrot)", Callback =3D functi=
+on() loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scr=
+ipts/main/EscapeTsunamiForBrainrots"))() end})
+
+-----------------------------------------------------------
+-- TAB 4: MURDER MYSTERY 2
+----
+</pre></body></html>
+------MultipartBoundary--dSVXg24D11EvpcjE2rb6FWvYRAc8I9GKA7LTfEssQX------
